@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
-import authService from "../services/authService";
+import authService from "../../services/authService.js";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -32,35 +32,30 @@ function Login() {
   };
 
   return (
-    <div className="container">
-      <img id="img-login" src="./image.png" alt="Logo Página de Login" />
-      <h1>Login</h1>
-      <form className="formRegist" onSubmit={handleLogin}>
-        <div>
-          <input
-           id="email"
-           type="email"
-           placeholder="Digite seu E-mail"
-           required
-           value={email}
-           onChange={(e) => setEmail(e.target.value)}
-           />
-        </div>
+    <div className="body-login">
+      <div className="container-login">
+        <img id="img-login" src="./image.png" alt="Logo Página de Login" />
+        <h1>Login</h1>
+        <form className="formRegist" onSubmit={handleLogin}>
+          <div>
+            <input id="email" type="email" placeholder="Digite seu E-mail" required value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
 
-        <div>
-          <input
-            id="password"
-            type="password"
-            placeholder="Digite sua senha"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+          <div>
+            <input
+              id="password"
+              type="password"
+              placeholder="Digite sua senha"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-        {error && <p style={{ color: "white" }}>⚠️ {error}</p>}
-        <button type="submit">Entrar</button>
-      </form>
+          {error && <p style={{ color: "white" }}>⚠️ {error}</p>}
+          <button type="submit">Entrar</button>
+        </form>
+      </div>
     </div>
   );
 }
